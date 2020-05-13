@@ -5,7 +5,7 @@
         <img src="../../assets/header-left.png" alt="">
         <span>郑州</span>
       </div>
-      <div class="my">
+      <div class="my" @click="goMy">
         <img src="../../assets/header-user.png" alt="">
       </div>
       <div class="title">租房APP</div>
@@ -18,17 +18,17 @@
       <li @click="select(0)">
         <img src="../../assets/area-servic.png" alt="">
         <span :id="area ? 'selecter' : ''">{{area || '请选择意向区域'}}</span>
-        <div></div>
+        <div :style="`border-top-color:${isSelect ? '#AC63FB' : '#ccc'};`"></div>
       </li>
       <li @click="select(1)">
         <img src="../../assets/metro.png" alt="">
         <span :id="metro ? 'selecter' : ''">{{metro || '请选择地铁口'}}</span>
-        <div></div>
+        <div :style="`border-top-color:${isSelect ? '#AC63FB' : '#ccc'};`"></div>
       </li>
       <li @click="select(2)">
         <img src="../../assets/price.png" alt="">
         <span :id="price ? 'selecter' : ''">{{price || '请选择价格区间'}}</span>
-        <div></div>
+        <div :style="`border-top-color:${isSelect ? '#AC63FB' : '#ccc'};`"></div>
       </li>
     </ul>
     <div class="btn" @click="submit">提交</div>
@@ -37,7 +37,6 @@
         v-model="isSelect"
         position="buttom"
         style="height: 5.33rem;width: 100%"
-        :close-on-click-overlay="false"
       >
         <van-picker
           title="请选择区域"
@@ -95,6 +94,9 @@ export default {
     },
     submit(){
       this.$router.push("matching")
+    },
+    goMy(){
+      this.$router.push("my")
     }
   }
 }
